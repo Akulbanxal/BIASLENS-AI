@@ -1,14 +1,6 @@
 {
   "buildCommand": "npm run vercel-build",
   "outputDirectory": "client/dist",
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "@vercel/node"
-    },
-    "api/**/*.py": {
-      "runtime": "@vercel/python"
-    }
-  },
   "routes": [
     {
       "src": "/api/ml/health",
