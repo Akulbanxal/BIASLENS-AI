@@ -4,8 +4,8 @@
   "description": "BiasLens AI backend",
   "main": "src/index.js",
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "dev": "nodemon src/start.js",
+    "start": "node src/start.js"
   },
   "keywords": [],
   "author": "",

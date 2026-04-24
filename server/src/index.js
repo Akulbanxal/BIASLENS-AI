@@ -18,7 +18,6 @@ import { systemMetrics } from './services/systemMetrics.js'
 dotenv.config()
 
 const app = express()
-const PORT = Number(process.env.PORT || 5001)
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
@@ -239,18 +238,6 @@ if (process.env.NODE_ENV === 'production' && !process.env.VERCEL) {
 
   app.get(/^(?!\/api).*/, (_req, res) => {
     res.sendFile(path.join(clientDistPath, 'index.html'))
-  })
-}
-
-const isDirectRun = process.argv[1] && path.resolve(process.argv[1]) === __filename
-
-if (isDirectRun && !process.env.VERCEL) {
-  app.listen(PORT, () => {
-    logger.info(`BiasLens AI backend started`, {
-      port: PORT,
-      nodeEnv: process.env.NODE_ENV,
-    })
-    console.log(`BiasLens AI backend running on http://localhost:${PORT}`)
   })
 }
 
