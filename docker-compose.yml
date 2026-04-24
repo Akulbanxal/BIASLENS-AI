@@ -1,0 +1,16 @@
+# BiasLens AI Docker Compose Configuration
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "5001:5001"
+    environment:
+      - NODE_ENV=production
+      - GOOGLE_PROJECT_ID=${GOOGLE_PROJECT_ID}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS}
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped

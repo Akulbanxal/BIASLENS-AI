@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Space Grotesk', 'Sora', sans-serif;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(56, 189, 248, 0.22), transparent 30%),
+    radial-gradient(circle at 85% 20%, rgba(129, 140, 248, 0.24), transparent 35%),
+    radial-gradient(circle at 50% 90%, rgba(236, 72, 153, 0.18), transparent 30%),
+    #020617;
+  color: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@layer utilities {
+  .glass {
+    @apply border border-white/10 bg-white/5 backdrop-blur-xl;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 24px rgba(96, 165, 250, 0.4);
+  }
+
+  .neon-ring {
+    box-shadow:
+      inset 0 0 0 1px rgba(148, 163, 184, 0.25),
+      0 0 28px rgba(59, 130, 246, 0.25),
+      0 0 48px rgba(129, 140, 248, 0.2);
+  }
+}
