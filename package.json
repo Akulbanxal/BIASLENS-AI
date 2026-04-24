@@ -14,9 +14,6 @@
   "author": "",
   "license": "ISC",
   "type": "module",
-  "dependencies": {
-    "serverless-http": "^3.2.0"
-  },
   "devDependencies": {
     "concurrently": "^9.2.1"
   }
