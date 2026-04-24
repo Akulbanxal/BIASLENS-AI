@@ -82,6 +82,35 @@ docker-compose up --build -d
 # Health:   http://localhost:5001/api/health
 ```
 
+### Vercel (Frontend + Node API + Python ML Health)
+
+This repository is configured for Vercel using:
+- `vercel.json` (routing + build settings)
+- `api/[...all].js` (Express backend as serverless function)
+- `api/ml/health.py` (Python ML health endpoint)
+
+#### 1) Import project in Vercel
+- Framework preset: `Other`
+- Root directory: repository root
+
+#### 2) Build/Output settings
+- Build Command: `npm run vercel-build`
+- Output Directory: `client/dist`
+
+#### 3) Environment Variables (Project Settings -> Environment Variables)
+- `GEMINI_API_KEY`
+- `GOOGLE_PROJECT_ID`
+- `GOOGLE_APPLICATION_CREDENTIALS` (optional; only if you wire cloud creds)
+- `NODE_ENV=production`
+
+#### 4) Deploy
+- Push to `main` or click **Deploy** in Vercel dashboard.
+
+#### 5) Verify after deploy
+- App: `https://<your-vercel-domain>/`
+- Backend health: `https://<your-vercel-domain>/api/health`
+- ML health: `https://<your-vercel-domain>/api/ml/health`
+
 ## 🏗️ Project Structure
 
 ```

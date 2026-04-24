@@ -232,7 +232,7 @@ app.post('/api/simulate-intervention', (req, res) => {
   })
 })
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production' && !process.env.VERCEL) {
   const clientDistPath = path.resolve(__dirname, '../../client/dist')
 
   app.use(express.static(clientDistPath))
@@ -242,10 +242,16 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-app.listen(PORT, () => {
-  logger.info(`BiasLens AI backend started`, {
-    port: PORT,
-    nodeEnv: process.env.NODE_ENV,
+const isDirectRun = process.argv[1] && path.resolve(process.argv[1]) === __filename
+
+if (isDirectRun && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    logger.info(`BiasLens AI backend started`, {
+      port: PORT,
+      nodeEnv: process.env.NODE_ENV,
+    })
+    console.log(`BiasLens AI backend running on http://localhost:${PORT}`)
   })
-  console.log(`BiasLens AI backend running on http://localhost:${PORT}`)
-})
+}
+
+export default app
